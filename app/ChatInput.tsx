@@ -1,5 +1,7 @@
 "use client";
 
+import { unstable_getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import useSWR from "swr";
 import { v4 as uuid } from "uuid";
@@ -9,7 +11,7 @@ import fetcher from "../utils/fetchMessages";
 function ChatInput() {
   const [input, setInput] = useState("");
   const {data:messages, error, mutate} = useSWR('/api/getMessages', fetcher);
-
+  const {data} = useSession();
   const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input) return;
@@ -23,9 +25,9 @@ function ChatInput() {
       id,
       message: messageToSend,
       created_at: Date.now(),
-      username: "Gaurav",
-      profilePic: "https://avatars.githubusercontent.com/u/88154142?v=4",
-      email: "gaurav@gmail.com",
+      username: data?.user?.name,
+      profilePic: data?.user?.image,
+      email: data?.user?.email,
     };
 
     const uploadMessageToUpstash = async () => {
@@ -54,6 +56,7 @@ function ChatInput() {
     >
       <input
         value={input}
+        disabled={!data}
         onChange={(e) => setInput(e.target.value)}
         type="text"
         className="

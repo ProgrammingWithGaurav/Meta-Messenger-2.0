@@ -1,17 +1,18 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import LogoutButton from './LogoutButton';
+import {useSession} from 'next-auth/react';
 
 function Header() {
-  const session = true;
-
-  if (session)
+  const {data} = useSession();
+  if (data)
     return (
       <header className="sticky top-0 z-50 bg-white flex justify-between items-center p-10 shadow-sm">
         <div className="flex space-x-2">
           <Image
             className="rounded-full mx-2 object-contain"
-            src="https://links.papareact.com/jne"
+            src={data?.user?.image}
             width={50}
             height={10}
             alt="Profile Picture"
@@ -19,7 +20,7 @@ function Header() {
 
           <div>
             <p className="text-blue-400">Logged in as: </p>
-            <p className="font-bold text-lg">Gaurav</p>
+            <p className="font-bold text-lg">{data?.user?.name}</p>
           </div>
         </div>
 
