@@ -12,7 +12,7 @@ function Header() {
         <div className="flex space-x-2">
           <Image
             className="rounded-full mx-2 object-contain"
-            src={data?.user?.image}
+            src={data?.user?.image!}
             width={50}
             height={10}
             alt="Profile Picture"

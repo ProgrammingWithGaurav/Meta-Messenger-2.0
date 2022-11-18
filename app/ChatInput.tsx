@@ -25,9 +25,9 @@ function ChatInput() {
       id,
       message: messageToSend,
       created_at: Date.now(),
-      username: data?.user?.name,
-      profilePic: data?.user?.image,
-      email: data?.user?.email,
+      username: data?.user?.name!,
+      profilePic: data?.user?.image!,
+      email: data?.user?.email!,
     };
 
     const uploadMessageToUpstash = async () => {

@@ -1,3 +1,24 @@
+# Nextjs Meta Messenger 2.0 
+
+## Tech Stacks ⚙️
+- Upstash
+- Redis
+- NextJs
+- Pusher.js (for realtime messaging)
+- react-timeago
+- Next Auth (for authentication)
+- Typescript
+
+## Features 🌟🌟⭐
+- SignIn / Signout
+- Google Login
+- Realtime live messaging
+
+
+# Screenshot
+![Screenshot](./public/Screenshot.png)
+
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
